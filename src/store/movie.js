@@ -82,22 +82,22 @@ export default {
       }
     },
 
-    async getMovieListMore({ commit, rootState }, payload = {}) {
+    async getMovieListMore({ commit, state }, payload = {}) {
       const { searchTitle, searchYear } = payload;
 
       commit('assignState', { isLoading: true });
       commit('assignState', { error: { isError: false, errorMessage: '' } });
-      commit('assignState', { nowPage: rootState.movie.nowPage + 1 });
+      commit('assignState', { nowPage: state.nowPage + 1 });
 
       try {
         const { Search } = await request({
           s: searchTitle,
           y: searchYear,
-          page: rootState.movie.nowPage,
+          page: state.nowPage,
         });
 
         commit('assignState', {
-          movieList: [...rootState.movie.movieList, ...Search],
+          movieList: [...state.movieList, ...Search],
         });
         commit('assignState', { isLoading: false });
       } catch (error) {
@@ -105,7 +105,7 @@ export default {
         commit('assignState', {
           error: { isError: true, errorMessage: error.message },
         });
-        commit('assignState', { nowPage: rootState.movie.nowPage - 1 });
+        commit('assignState', { nowPage: state.nowPage - 1 });
       }
     },
   },
