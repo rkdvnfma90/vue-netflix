@@ -14,13 +14,11 @@
 
 <script>
 import Header from '@/components/Header';
-import ScrolltoTop from '@/components/ScrolltoTop';
 import { throttle } from '@/utils/functions';
 
 export default {
   components: {
     Header,
-    ScrolltoTop,
   },
 
   data() {

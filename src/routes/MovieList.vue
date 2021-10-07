@@ -88,17 +88,17 @@ export default {
 <style lang="scss" scoped>
 .movielist__container {
   display: grid;
-  justify-content: center; /* 수평 가운데 정렬 */
-  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(4, minmax(100px, 300px));
   gap: 50px 30px;
   color: white;
 
   @include media(lg) {
-    grid-template-columns: repeat(3, minmax(100px, 200px));
+    grid-template-columns: repeat(3, minmax(100px, 250px));
   }
 
   @include media(md) {
-    grid-template-columns: repeat(2, minmax(100px, 200px));
+    grid-template-columns: repeat(2, minmax(100px, 250px));
   }
 
   @include media(sm) {
