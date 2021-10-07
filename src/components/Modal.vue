@@ -49,14 +49,6 @@ export default {
   },
 
   watch: {
-    modelValue(newValue) {
-      if (newValue) {
-        window.addEventListener('keyup', this.keyupHandler);
-      } else {
-        window.removeEventListener('keyup', this.keyupHandler);
-      }
-    },
-
     isLoading(newValue) {
       if (!newValue) {
         this.isDisplay = true;
@@ -64,6 +56,13 @@ export default {
         this.isDisplay = false;
       }
     },
+  },
+  created() {
+    window.addEventListener('keyup', this.keyupHandler);
+  },
+
+  unmounted() {
+    window.removeEventListener('keyup', this.keyupHandler);
   },
 
   methods: {
@@ -75,6 +74,7 @@ export default {
     },
     keyupHandler(event) {
       if (event.key === 'Escape') {
+        console.log(event.key);
         this.offModal();
       }
     },
